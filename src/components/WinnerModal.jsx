@@ -1,6 +1,7 @@
 import {Square} from './Square'
+import {TURNS} from '../constants'
 
-export function WinnerModal({ winner, resetGame }) {
+export function WinnerModal({ winner, resetGame, score }) {
     if (winner === null) return null;
 
     const winnerText = winner === false ? 'Draw' : 'Winner';
@@ -15,6 +16,13 @@ export function WinnerModal({ winner, resetGame }) {
                 <header className="win">
                     {winner && <Square>{winner}</Square>}
                 </header>
+                {score && (
+                    <div className="score-display">
+                        <p>{TURNS.X} Wins: {score.X}</p>
+                        <p>{TURNS.O} Wins: {score.O}</p>
+                        <p>Draws: {score.draws}</p>
+                    </div>
+                )}
                 <footer>
                     <button onClick={resetGame}> Start Again</button>
                 </footer>

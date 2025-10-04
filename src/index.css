@@ -99,7 +99,7 @@ body {
 
 .winner .text {
   background: #111;
-  height: 300px;
+  min-height: 300px;
   width: 320px;
   border: 2px solid #eee;
   border-radius: 10px;
@@ -108,6 +108,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 20px;
+  padding: 20px;
 }
 
 .winner .win {
@@ -128,4 +129,33 @@ body {
   place-items: center;
   cursor: pointer;
   font-size: 48px;
+}
+
+.score {
+  color: #eee;
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 2px solid #eee;
+}
+
+.score div {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.score-display {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.score-display p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #eee;
+  font-weight: bold;
 }
