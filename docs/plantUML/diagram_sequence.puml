@@ -1,0 +1,64 @@
+@startuml
+title Git Flow — Création d'une Pull Request (GitHub)
+
+skinparam monochrome true
+skinparam sequence {
+  ArrowColor Black
+  ActorBorderColor Black
+  ParticipantBorderColor Black
+  LifeLineBorderColor Black
+  LifeLineBackgroundColor White
+}
+
+actor Dev as "Développeur"
+participant Local as "Repo local (git)"
+participant Remote as "GitHub (origin)"
+participant CI as "CI/CD"
+actor Reviewer as "Reviewer"
+actor Maintainer as "Mainteneur"
+
+== Préparation ==
+Dev -> Local: git checkout -b feature/ma-fonction
+note right of Local
+  Branches:
+  - main (production)
+  - develop (optionnel - Git Flow)
+  - feature/ma-fonction
+end note
+
+Dev -> Local: Coder, tester en local
+
+loop Commits incrémentaux
+  Dev -> Local: git add . && git commit -m "Message clair"
+end
+
+== Publication ==
+Dev -> Remote: git push -u origin feature/ma-fonction
+
+== Pull Request ==
+Dev -> Remote: Ouvrir PR: feature/ma-fonction -> main\n(lier issue, ajouter description)
+Remote -> CI: Déclenche checks (tests, lint, build)
+CI --> Remote: Statuts des checks
+
+== Revue ==
+Reviewer -> Remote: Revue, commentaires, approbations
+alt Changements demandés
+  Dev -> Local: Corriger
+  Dev -> Local: commit
+  Dev -> Remote: push
+  Remote -> CI: Relance checks
+  CI --> Remote: OK
+else OK pour merge
+  Reviewer -> Remote: Approve
+end
+
+== Merge ==
+Maintainer -> Remote: Merge (Merge/Squash/Rebase)
+note over Remote
+  Historique propre recommandé: Squash
+end note
+Remote --> Dev: PR = Merged
+Dev -> Local: git checkout main && git pull --ff-only
+Dev -> Remote: Supprimer branche feature
+
+@enduml
