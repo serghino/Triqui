@@ -129,3 +129,97 @@ body {
   cursor: pointer;
   font-size: 48px;
 }
+
+/* Scoreboard styles */
+.scoreboard {
+  margin: 20px 0;
+  padding: 20px;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.scoreboard h2 {
+  color: #eee;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.scoreboard .scores {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 15px;
+}
+
+.scoreboard .player-score {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scoreboard .player-score .square {
+  width: 50px;
+  height: 50px;
+  font-size: 32px;
+  cursor: default;
+}
+
+.scoreboard .score-value {
+  font-size: 28px;
+  font-weight: bold;
+  color: #eee;
+  min-width: 30px;
+}
+
+.reset-scores-btn {
+  background: transparent;
+  border: 2px solid #ff6b6b;
+  color: #ff6b6b;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.reset-scores-btn:hover {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+/* Modal scores styles */
+.modal-scores {
+  margin: 15px 0;
+}
+
+.modal-scores h3 {
+  color: #eee;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.modal-scores .score-display {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.modal-scores .player-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-scores .player-score .square {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  cursor: default;
+}
+
+.modal-scores .player-score span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #eee;
+}
